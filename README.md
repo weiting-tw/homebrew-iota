@@ -6,7 +6,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-## 設定 Taps 以及(反)安裝 iota(正式版)
+## 設定 Taps 以及(反)安裝 iota
 
 ```sh
 brew tap a26007565/iota
@@ -25,7 +25,7 @@ brew uninstall iota
 brew tap a26007565/iota
 brew install iota-beta --cask
 
-# 確認安裝版本
+# 重新安裝最新版本
 brew install iota-beta --cask -f
 
 # 移除
