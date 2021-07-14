@@ -1,5 +1,7 @@
 # iota
 
+![workflow](https://github.com/a26007565/homebrew-iota/actions/workflows/main.yml/badge.svg)
+
 ## [安裝 Homebrew](https://brew.sh/index_zh-tw)
 
 ```sh
@@ -14,6 +16,9 @@ brew install iota --cask
 
 # 確認安裝版本
 brew list --cask --version | grep iota
+
+# 更新
+brew upgrade iota
 
 # 移除
 brew uninstall iota
