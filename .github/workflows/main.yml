@@ -26,31 +26,37 @@ jobs:
         with:
           cmd: "jq .app.mac.url package.json -r"
 
+      - name: Download iota.dmg
+        run: |
+          curl -A "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0" ${{ steps.downloadPath.outputs.value }} --resolve gssweb.gss.com.tw:443:60.251.121.232 -O
+          echo "checksum=$(shasum -a 256 iota.dmg | awk '{ print $1 }')" >> $GITHUB_ENV
+
       - name: Build rb
         run: |
           cat << EOF > ./Casks/iota.rb 
           cask "iota" do
             version "${{ steps.version.outputs.value }}"
-            sha256 :no_check
+            sha256 "${{ env.checksum }}"
 
             url "${{ steps.downloadPath.outputs.value }}",
                 user_agent: :fake
             name "iota"
             homepage "https://im.gss.com.tw/"
 
-            auto_updates true
-
             app "iota.app"
           end
           EOF
 
       - name: Commit files
+        id: commit
+        continue-on-error: true
         run: |
           git config --local user.email "a26007565@gmail.com"
           git config --local user.name "weiting"
           git commit -m "Update iota.rb" -a
 
       - name: Push changes
+        if: steps.commit.outcome == 'success' && steps.commit.conclusion == 'success'
         uses: ad-m/github-push-action@master
         with:
           branch: master
