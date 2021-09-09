@@ -1,6 +1,6 @@
 cask "iota" do
   version "1.12.2"
-  sha256 "dff69d1ab1024f7fe04de8c46460b7c38bc8e4ad90d23fc0c842df540cac460c"
+  sha256 "323d4c8a9121bc1c33db8325f8d3a2d775e7c5f54e59fd8541f78a1bbfda4c8a"
 
   url "https://gssweb.gss.com.tw/iota/iota.dmg",
       user_agent: :fake
