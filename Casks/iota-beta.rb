@@ -9,5 +9,5 @@ cask 'iota-beta' do
 
   auto_updates true
 
-  app 'iota.app'
+  app 'iota.app', target: "iota beta.app"
 end
