@@ -24,6 +24,19 @@ brew upgrade iota
 brew uninstall iota
 ```
 
+## 安裝乾淨版 iota
+
+```sh
+brew tap weiting-tw/iota
+brew install iota-clean --cask
+
+# 更新
+brew upgrade iota-clean
+
+# 移除
+brew uninstall iota-clean
+```
+
 ## 安裝搶先測試版 iota
 
 ```sh
