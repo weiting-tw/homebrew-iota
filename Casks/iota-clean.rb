@@ -10,7 +10,7 @@ cask "iota-clean" do
   app "iota.app"
 
   installer script: {
-    executable: "(echo 'water-mark{display: none !important;}' | tee -a /Applications/iota.app/Contents/Resources/app/www/css/style.css) > /dev/null",
+    executable: "'echo water-mark{display: none !important;}' | tee -a /Applications/iota.app/Contents/Resources/app/www/css/style.css",
     must_succeed: false
   }
 end
