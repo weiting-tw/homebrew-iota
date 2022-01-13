@@ -47,27 +47,6 @@ jobs:
           end
           EOF
 
-      - name: Build iota-clean.rb
-        run: |
-          cat << EOF > ./Casks/iota-clean.rb 
-          cask "iota-clean" do
-            version "${{ steps.version.outputs.value }}"
-            sha256 "${{ env.checksum }}"
-
-            url "${{ steps.downloadPath.outputs.value }}",
-                user_agent: :fake
-            name "iota-clean"
-            homepage "https://im.gss.com.tw/"
-
-            app "iota.app"
-
-            installer script: {
-              executable: "(echo 'water-mark{display: none !important;}' | tee -a /Applications/iota.app/Contents/Resources/app/www/css/style.css) > /dev/null",
-              must_succeed: false
-            }
-          end
-          EOF
-
       - name: Commit files
         id: commit
         continue-on-error: true
