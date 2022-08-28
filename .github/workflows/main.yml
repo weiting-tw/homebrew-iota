@@ -28,7 +28,7 @@ jobs:
 
       - name: Download iota.dmg
         run: |
-          curl -A "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0" ${{ steps.downloadPath.outputs.value }} --resolve gssweb.gss.com.tw:443:60.251.121.232 -O
+          curl -A "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0" "https://im.gss.com.tw/download/iota.dmg" --resolve im.gss.com.tw:443:60.251.121.232 -O
           echo "checksum=$(shasum -a 256 iota.dmg | awk '{ print $1 }')" >> $GITHUB_ENV
 
       - name: Build iota.rb
@@ -38,7 +38,7 @@ jobs:
             version "${{ steps.version.outputs.value }}"
             sha256 "${{ env.checksum }}"
 
-            url "${{ steps.downloadPath.outputs.value }}",
+            url "https://im.gss.com.tw/download/iota.dmg",
                 user_agent: :fake
             name "iota"
             homepage "https://im.gss.com.tw/"
