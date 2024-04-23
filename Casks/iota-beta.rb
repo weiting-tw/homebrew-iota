@@ -5,7 +5,7 @@ cask 'iota-beta' do
   url 'https://im2.gss.com.tw/download/test/iota.dmg',
       user_agent: :fake
   name 'iota-beta'
-  homepage 'https://https://iotademo.gss.com.tw/'
+  homepage 'https://iotademo.gss.com.tw/'
 
   auto_updates true
 

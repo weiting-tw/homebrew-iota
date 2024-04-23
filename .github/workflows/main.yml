@@ -12,7 +12,7 @@ jobs:
 
       - name: Get package.json
         run: |
-          curl -s -A "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0" -H "Accept: application/json" "https://https://iotademo.gss.com.tw/download/package.json" --resolve https://iotademo.gss.com.tw:443:175.99.166.66 -O
+          curl -s -A "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0" -H "Accept: application/json" "https://iotademo.gss.com.tw/download/package.json" --resolve https://iotademo.gss.com.tw:443:175.99.166.66 -O
 
       - name: Extract version from package.json
         uses: sergeysova/jq-action@v2
@@ -28,7 +28,7 @@ jobs:
 
       - name: Download iota.dmg
         run: |
-          curl -A "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0" "https://https://iotademo.gss.com.tw/download/iota.dmg" --resolve https://iotademo.gss.com.tw:443:175.99.166.66 -O
+          curl -A "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:32.0) Gecko/20100101 Firefox/32.0" "https://iotademo.gss.com.tw/download/iota.dmg" --resolve https://iotademo.gss.com.tw:443:175.99.166.66 -O
           echo "checksum=$(shasum -a 256 iota.dmg | awk '{ print $1 }')" >> $GITHUB_ENV
 
       - name: Build iota.rb
@@ -38,10 +38,10 @@ jobs:
             version "${{ steps.version.outputs.value }}"
             sha256 "${{ env.checksum }}"
 
-            url "https://https://iotademo.gss.com.tw/download/iota.dmg",
+            url "https://iotademo.gss.com.tw/download/iota.dmg",
                 user_agent: :fake
             name "iota"
-            homepage "https://https://iotademo.gss.com.tw/"
+            homepage "https://iotademo.gss.com.tw/"
 
             app "iota.app"
           end
